@@ -183,10 +183,16 @@ end
 
 
 class Game # C'est ici que va se dérouler le jeu
-	def initialize(name1,name2) # On crée les 2 joueurs et le plateau
+	def initialize # On crée les 2 joueurs et le plateau
+		
+		@board = Board.new
+		puts "Choisissez le pseudo du joueur 1"
+		name1 = gets.chomp
+		puts "Choisissez le pseudo du joueur 2"
+		name2 = gets.chomp
 		@player1 = Player.new(name1)
 		@player2 = Player.new(name2)
-		@board = Board.new
+
 	end
 
 	def play
@@ -262,21 +268,13 @@ clavier ! Si vous ne comprenez pas je vais quand même vous faire un dessin."
 			puts @player2.name + " a été meilleur, il remporte cette partie."
 		else
 			puts "C'est un match nul."
-		end 
+		end
 
 	end
 
 end
 
-def jouer #C'est la fonction qui va être appelée pour jouer, et qui permet aux joueurs de se présenter
-	puts "Choisissez le pseudo du joueur 1"
-	name1 = gets.chomp
-	puts "Choisissez le pseudo du joueur 2"
-	name2 = gets.chomp
+partie = Game.new.play
 
-	partie = Game.new(name1,name2)
-	partie.play
-end
 
-jouer() #On lance la partie
 
